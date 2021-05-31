@@ -1,0 +1,37 @@
+
+tf.constant(8, tf.float32, [2,4])
+tf.Variable(10, dtype=tf.int32) 
+
+numpy tensor互转
+numpy_data = tensor_data.numpy()
+tensor_data = tf.cast(numpy_data, dtype=tf.float32)#numpy转张量
+tf.convert_to_tensor(data_numpy, tf.float32)
+
+维度变化
+tf.reshape(x,[1,2])
+torch.reshape(x,[1,2])
+
+
+维度翻转
+==torch.transpose(x,0,1)#(2, 4, 3)==>[4, 2, 3]
+==torch.t(x)   /x.t()     #必须是二维张量或者矩阵
+
+降低维度
+tf.shape(tf.squeeze(t))   # [2, 3]， 默认删除所有为1的维度
+tf.shape(tf.squeeze(t, [2, 4]))  # [1, 2, 3, 1]，标号从零开始，只删掉了2和4维的1
+==torch.squeeze(x, 0).size()
+
+增加维度
+one_img = tf.expand_dims(one_img, 0)
+one_img = tf.expand_dims(one_img, -1) #-1表示最后一维
+==torch.unsqueeze(x, 0) #对输入的制定位置插入维度 1
+==tensor_name.expand(3, 4)  #torch.Tensor.expand(*size)
+
+拼接
+tf.concat([T1 ,T2] ,0)
+K.concatenate([T1 ,T2] ,0)
+torch.cat((A,B),0)
+
+求和
+tf.reduce_mean(input_tensor,axis=None)
+torch.mean(input, dim)
